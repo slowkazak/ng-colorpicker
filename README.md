@@ -6,21 +6,21 @@ Simple and lightweight colorpicker component for angular2
 * simple for use
 
 ##USAGE
-1. Import `DatePicker` component in `app.module.ts`
+1. Import `NgColorpicker` component in `app.module.ts`
   ```ts
   import { BrowserModule } from '@angular/platform-browser';
   import { NgModule } from '@angular/core';
   import { FormsModule } from '@angular/forms';
   import { HttpModule } from '@angular/http';
   
-  import { DatePicker } from 'ng2-colorpicker/ng2-colorpicker';
+  import { NgColorpicker } from 'ng-colorpicker/ng-colorpicker';
 
   import { AppComponent } from './app.component';
   
   @NgModule({
     declarations: [
       Appcomponent,
-      DatePicker
+      NgColorpicker
     ],
     imports: [
       BrowserModule,
@@ -32,3 +32,7 @@ Simple and lightweight colorpicker component for angular2
   })
   export class AppModule {}
   ```
+2. Use `<app-colorpicker>` in `app.component.html`
+     ```html
+     <app-colorpicker ></datepicker>
+     ```
