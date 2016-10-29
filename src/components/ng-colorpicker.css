@@ -1,0 +1,7 @@
+.color_cursor {
+  width: 5px;
+  height: 5px;
+  border: 1px dotted #000;
+  border-radius: 50%;
+  position: absolute;
+}

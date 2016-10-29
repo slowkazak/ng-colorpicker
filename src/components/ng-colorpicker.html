@@ -1,0 +1,2 @@
+<div [ngClass]="{color_cursor: true}" [ngStyle]="{left: _cursor_pos.x, top: _cursor_pos.y}" *ngIf="_cursor_pos"></div>
+<canvas #colorpicker width="300" height="200" (click)="color.emit(_PickColor($event))"></canvas>
