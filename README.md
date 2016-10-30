@@ -13,14 +13,14 @@ Simple and lightweight colorpicker component for angular2
   import { FormsModule } from '@angular/forms';
   import { HttpModule } from '@angular/http';
   
-  import { NgColorpicker } from 'ng-colorpicker/ng-colorpicker';
+  import { ColorPicker } from 'ng-colorpicker/ng-colorpicker';
 
   import { AppComponent } from './app.component';
   
   @NgModule({
     declarations: [
       Appcomponent,
-      NgColorpicker
+      ColorPicker
     ],
     imports: [
       BrowserModule,
