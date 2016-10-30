@@ -17,9 +17,9 @@ export class NgColorpicker implements AfterViewInit {
    * @param {any} _cursor_pos - param for drawing picked area of canvas under mouse cursor. Stores coords of active area
    */
   @ViewChild("colorpicker") colorpicker: any;
-  @Output()color: EventEmitter<any> = new EventEmitter();
+  @Output() color: EventEmitter<any> = new EventEmitter();
   private _cursor_pos: any;
-  private col:any;
+  private col: any;
 
   /**
    * _GetImage - gets image with color palette
@@ -71,12 +71,14 @@ export class NgColorpicker implements AfterViewInit {
    * @private
    */
   private _PickColor(ev) {
-    let color:any = null;
+    let color: any = null;
     try {
       let context: any = this.colorpicker.nativeElement.getContext("2d");
-      let coords = {x: ev.offsetX, y: ev.offsetY};
-      this._cursor_pos = {x: coords.x + 5 + "px", y: coords.y + 5 + "px"};
-      let imagedata = context.getImageData(coords.x, coords.y, 1, 1);
+      let x = ev.pageX - this.colorpicker.nativeElement.offsetLeft;
+      let y = ev.pageY - this.colorpicker.nativeElement.offsetTop;
+      // let coords = {x: x, y: y};
+      this._cursor_pos = {x: x -2 + "px", y: y - 2 + "px"};
+      let imagedata = context.getImageData(x, y, 1, 1);
       color = {
         hexcolor: {
           Rhex: this._ToHex(imagedata.data[0]),
@@ -93,8 +95,8 @@ export class NgColorpicker implements AfterViewInit {
     catch (e) {
       console.error(e)
     }
-    this.col = color
-return color;
+    this.col = color;
+    return color;
   }
 
   /**
