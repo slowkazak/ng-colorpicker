@@ -1,4 +1,8 @@
-import {Component, OnInit,Output, EventEmitter, AfterViewInit, ViewChild} from "@angular/core";
+/**
+ * ng-colorpicker - Simple and powerful color picker component for Angular2 projects.
+ * For more info see README.MD
+ */
+import {Component, Output, EventEmitter, AfterViewInit, ViewChild} from "@angular/core";
 import {settings} from "../settings/settings";
 
 @Component({
@@ -7,11 +11,23 @@ import {settings} from "../settings/settings";
   styleUrls: ['ng-colorpicker.css']
 })
 export class NgColorpicker implements AfterViewInit {
+  /**
+   * @param {any} colorpicker - canvas object for creating color palette.
+   * @param {EventEmitter<any>} color  - output param which takes color data outside the ng-colorpicker.
+   * @param {any} _cursor_pos - param for drawing picked area of canvas under mouse cursor. Stores coords of active area
+   */
   @ViewChild("colorpicker") colorpicker: any;
   @Output()color: EventEmitter<any> = new EventEmitter();
   private _cursor_pos: any;
+  private col:any
 
-  private _GetImage(imgsrc: string) {
+  /**
+   * _GetImage - gets image with color palette
+   * @param imgsrc - path to imagefile, default - from settings
+   * @returns {Promise<T>|Promise<U>} - return promise with image
+   * @private
+   */
+  private _GetImage(imgsrc: string = settings.canvas_image_src) {
     return new Promise(
       (resolve, reject) => {
         try {
@@ -32,6 +48,12 @@ export class NgColorpicker implements AfterViewInit {
       );
   }
 
+  /**
+   * _InitPalette - function for draw palette in canvas
+   * @param element - canvas element
+   * @param image - Image() object for ex. <img src="foo.jpg">
+   * @private
+   */
   private _InitPalette(element: HTMLCanvasElement, image: any) {
     try {
       let context = element.getContext("2d");
@@ -42,6 +64,12 @@ export class NgColorpicker implements AfterViewInit {
     }
   }
 
+  /**
+   * _PickColor - return picked color in hex and dec view for every color channel. See readme.md
+   * @param ev - click event
+   * @returns {any}
+   * @private
+   */
   private _PickColor(ev) {
     let color:any = null;
     try {
@@ -65,9 +93,16 @@ export class NgColorpicker implements AfterViewInit {
     catch (e) {
       console.error(e)
     }
+    this.col = color
 return color;
   }
 
+  /**
+   * _ToHex - function which returns hex val of dec color resolution or 00
+   * @param value - decimal color resolution
+   * @returns {string|number}
+   * @private
+   */
   private _ToHex(value: number) {
     let hex_num: string | number;
     if (!isNaN(value)) {
@@ -79,8 +114,11 @@ return color;
     return hex_num;
   }
 
+  /**
+   * @_constructor - if all view elements inited - draw color palette in canwas
+   */
   ngAfterViewInit() {
-    this._GetImage(settings.canvas_image_src).then((res: any)=> {
+    this._GetImage().then((res: any)=> {
       this._InitPalette(this.colorpicker.nativeElement, res);
     }).catch(err=>console.error(err));
   }
