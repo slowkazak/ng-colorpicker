@@ -37,16 +37,17 @@ Simple and lightweight colorpicker component for angular2
      <app-colorpicker  (color)="func($event)"></datepicker>
      ```
 and get color parametres in func()
-###Output Data
-$event returns JSON object with RGB and Hex colors codes for everu singhe channel. For example
+
+##Output Data
+$event returns JSON object with RGB and Hex colors codes for every single channel. For example
 ```json
 {
-        hexcolor: {
+        "hexcolor": {
           "Rhex": "FF",
           "Ghex": "FF",
           "Bhex": "FF"
         },
-        rgbcolor: {
+        "rgbcolor": {
           "R": 255,
           "G": 255,
           "B": 255
