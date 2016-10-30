@@ -1,3 +1,3 @@
 export const settings = {
-  "canvas_image_src": "res/img.png"
+  "canvas_image_src": "res/colors.png"
 };

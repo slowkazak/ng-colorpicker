@@ -19,7 +19,7 @@ export class NgColorpicker implements AfterViewInit {
   @ViewChild("colorpicker") colorpicker: any;
   @Output()color: EventEmitter<any> = new EventEmitter();
   private _cursor_pos: any;
-  private col:any
+  private col:any;
 
   /**
    * _GetImage - gets image with color palette
