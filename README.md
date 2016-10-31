@@ -1,4 +1,4 @@
-# ng2-colorpicker
+# ng-colorpicker
 
 Simple and lightweight colorpicker component for angular2
 
@@ -9,7 +9,7 @@ Simple and lightweight colorpicker component for angular2
 1. install package via npm ```
 npm install ng-colorpicker
 ```
-2. Import `NgColorpicker` component in `app.module.ts`
+2. Import `ColorPicker` component in `app.module.ts`
   ```ts
   import { BrowserModule } from '@angular/platform-browser';
   import { NgModule } from '@angular/core';
